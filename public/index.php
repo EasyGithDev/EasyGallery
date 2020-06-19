@@ -1,4 +1,12 @@
 <?php
+
+use Easygd\Color;
+use Easygd\Convolution;
+use Easygd\ImageFilterIterator;
+use Easygd\Position;
+use Easygd\Text;
+use Easygd\Transformation;
+
 require 'conf.php';
 
 $create_thumb = isset($_GET['create_thumb']) ? $_GET['create_thumb'] : 0;
@@ -6,29 +14,29 @@ $create_thumb = isset($_GET['create_thumb']) ? $_GET['create_thumb'] : 0;
 if ($create_thumb) {
 
     set_time_limit(0);
-    $text = \Easy\TrueType::create('Copyright (C) 2013 Florent Brusciano', \Easy\Text::TEXT_MACOS_FONT_PATH . '/Arial Black.ttf')
+    $text = Text::create('Copyright (C) 2013 Florent Brusciano', Text::TEXT_MACOS_FONT_PATH . '/Arial Black.ttf')
 	    ->setSize(5)
-	    ->setColor(Easy\Color::White())
-	    ->setPosition(Easy\Position::create(40, 190));
+	    ->setColor(Color::White())
+	    ->setPosition(Position::create(40, 190));
 
-    foreach (new \Easy\ImageFilterIterator(new DirectoryIterator(THUMB_ORIGINAL)) as $file) {
+    foreach (new ImageFilterIterator(new DirectoryIterator(THUMB_ORIGINAL)) as $file) {
 
-	if (($image = Easy\Image::createFrom($file->getPathname())) === FALSE)
+	if (($image = Image::createFrom($file->getPathname())) === FALSE)
 	    continue;
 
-	\Easy\Transformation::thumbnail($image, 100)
+	Transformation::thumbnail($image, 100)
 		->save(THUMB_100 . $file->getFilename(), 100, FALSE);
 
-	\Easy\Transformation::thumbnail($image, 200)
+	Transformation::thumbnail($image, 200)
 		->addText($text)
 		->save(THUMB_200 . $file->getFilename(), 100, FALSE);
 
-	\Easy\Transformation::thumbnail($image, 400)
+	Transformation::thumbnail($image, 400)
 		->save(THUMB_400 . $file->getFilename(), 100, FALSE);
     }
 }
 
-$iterator = new \Easy\ImageFilterIterator(new DirectoryIterator(THUMB_200));
+$iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -528,7 +536,7 @@ $iterator = new \Easy\ImageFilterIterator(new DirectoryIterator(THUMB_200));
 			<div id="modal-tab-customs" class="modal-tab hide">
 
 			    <?php
-			    $convolutions = Easy\Convolution::getConvolutionList();
+			    $convolutions = Convolution::getConvolutionList();
 			    ?>
 			    <form id="modal-form-customs" class="well" onsubmit="return applyConvolution();">
 				<div>
