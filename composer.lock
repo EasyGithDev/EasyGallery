@@ -1,0 +1,61 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "dcbc5b850dadba9b960d8857836dbc30",
+    "packages": [
+        {
+            "name": "easygithdev/easygd",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EasyGithDev/EasyGD.git",
+                "reference": "eac18cb60d2a6c98f22fd58a8b296214faacc2bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EasyGithDev/EasyGD/zipball/eac18cb60d2a6c98f22fd58a8b296214faacc2bd",
+                "reference": "eac18cb60d2a6c98f22fd58a8b296214faacc2bd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Easygd\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Brusciano",
+                    "email": "florent.brusciano@gmail.com"
+                }
+            ],
+            "description": "EasyGD - a PHP framework for use GD easier",
+            "keywords": [
+                "gd",
+                "image",
+                "php"
+            ],
+            "time": "2020-06-19T15:50:23+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "easygithdev/easygd": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
