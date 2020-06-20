@@ -21,7 +21,7 @@ if ($create_thumb) {
 	//     ->setColor(Color::White())
 	//     ->setPosition(Position::create(40, 190));
 
-	foreach (new ImageFilterIterator(new DirectoryIterator(THUMB_ORIGINAL)) as $file) {
+	foreach (new ImageFilterIterator(new DirectoryIterator(IMG_PATH)) as $file) {
 
 		if (($image = (new Image())->load($file->getPathname())) === FALSE) {
 			continue;
@@ -151,10 +151,10 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 	<script src="assets/js/screenfull.min.js"></script>
 
 	<script>
-		var thumb_original = "<?php echo THUMB_ORIGINAL; ?>";
-		var thumb_400 = "<?php echo THUMB_400; ?>";
-		var thumb_200 = "<?php echo THUMB_200; ?>";
-		var thumb_100 = "<?php echo THUMB_100; ?>";
+		var thumb_original = "<?php echo IMG_PATH; ?>";
+		var thumb_400 = "/thumb/400";
+		var thumb_200 = "/thumb/200";
+		var thumb_100 = "/thumb/100";
 
 		var date = new Date();
 		var angle = 0;
@@ -279,7 +279,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 			loadFilters(filename);
 			loadTools();
 			loadInfos(filename);
-			$("#modal-img").attr("src", thumb_400 + filename);
+			$("#modal-img").attr("src", thumb_400 + '/' + filename);
 			$("#modal-img").attr("alt", filename);
 			$('#myModal .modal-header H4').html(filename);
 		}

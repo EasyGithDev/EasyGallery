@@ -5,24 +5,20 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 define('APP_PATH', realpath(__DIR__ . '/..'));
+define('PUBLIC_PATH', APP_PATH . '/public');
 define('IMG_PATH', APP_PATH . '/images');
-define('THUMB_ORIGINAL', IMG_PATH . '/original');
-define('THUMB', IMG_PATH . '/thumb');
-define('THUMB_200', IMG_PATH . '/200');
-define('THUMB_400', IMG_PATH . '/400');
-define('THUMB_100', IMG_PATH . '/100');
-define('THUMB_HISTO', IMG_PATH . '/histo');
+define('THUMB_PATH', PUBLIC_PATH . '/thumb');
+define('THUMB_200', THUMB_PATH . '/200');
+define('THUMB_400', THUMB_PATH . '/400');
+define('THUMB_100', THUMB_PATH . '/100');
+define('THUMB_HISTO', THUMB_PATH . '/histo');
 
 if (!is_dir(IMG_PATH)) {
     mkdir(IMG_PATH);
 }
 
-if (!is_dir(THUMB_ORIGINAL)) {
-    mkdir(THUMB_ORIGINAL);
-}
-
-if (!is_dir(THUMB)) {
-    mkdir(THUMB);
+if (!is_dir(THUMB_PATH)) {
+    mkdir(THUMB_PATH);
 }
 
 if (!is_dir(THUMB_100)) {
