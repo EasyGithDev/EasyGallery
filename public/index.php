@@ -151,7 +151,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 	<script src="assets/js/screenfull.min.js"></script>
 
 	<script>
-		var thumb_original = "<?php echo IMG_PATH; ?>";
+		var img_path = "<?php echo IMG_PATH; ?>";
 		var thumb_400 = "/thumb/400";
 		var thumb_200 = "/thumb/200";
 		var thumb_100 = "/thumb/100";
@@ -186,7 +186,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 
 			$('#modal-btn-fullscreen').click(function() {
 				if (screenfull) {
-					var img = thumb_original + getFilename();
+					var img = img_path + getFilename();
 					$("#modal-img").attr("src", img);
 					screenfull.toggle($("#modal-img")[0]);
 				}
@@ -204,7 +204,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 
 
 			$('#custom-selection').change(function() {
-				var filesrc = thumb_400 + getFilename();
+				var filesrc = thumb_400 + '/' + getFilename();
 				var src = 'loader.php?action=filter&filesrc=' + filesrc + '&filtertype=convolution&filtername=' + $(this).val();
 
 				$("#modal-img").attr("src", src);
@@ -286,7 +286,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 
 		function loadFilters(filename) {
 
-			var src = 'loader.php?action=filter&filesrc=' + thumb_100 + filename;
+			var src = 'loader.php?action=filter&filesrc=' + thumb_100 + '/' + filename;
 
 			$("#myModal .thumbnail").find('*').each(function(key, val) {
 
@@ -297,7 +297,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 				//console.log(thumbnail)
 				$(val).attr("src", src + filterstring);
 				$(val).click(function() {
-					var filesrc = thumb_400 + getFilename();
+					var filesrc = thumb_400 + '/' + getFilename();
 					var src = 'loader.php?action=filter&filesrc=' + filesrc + filterstring;
 					$("#modal-img").attr("src", src + '&t=' + date.getTime());
 
@@ -352,7 +352,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 						$(val).slider('value', ui.value);
 						changeColor();
 					} else {
-						var filesrc = thumb_400 + getFilename();
+						var filesrc = thumb_400 + '/' + getFilename();
 						var src = 'loader.php?action=filter&filesrc=' + filesrc + '&filtertype=preset&filtername=' + filtername + '&value=' + ui.value;
 						$("#modal-img").attr("src", src);
 					}
@@ -364,7 +364,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 
 		function loadInfos(filename) {
 
-			var src = 'loader.php?action=info&filesrc=' + thumb_original + filename;
+			var src = 'loader.php?action=info&filesrc=' + img_path + '/' + filename;
 			$.getJSON(src + '&t=' + date.getTime(), function(data) {
 				var items = [];
 				$.each(data, function(key, val) {
@@ -381,7 +381,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 
 		function loadHistogramme(filename) {
 
-			var src = 'loader.php?action=histogramme&filesrc=' + thumb_original + filename;
+			var src = 'loader.php?action=histogramme&filesrc=' + img_path + '/' + filename;
 			$.getJSON(src + '&t=' + date.getTime(), function(data) {
 
 			});
@@ -390,7 +390,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 
 		function changeColor() {
 
-			var filesrc = thumb_400 + getFilename();
+			var filesrc = thumb_400 + '/' + getFilename();
 			var src = 'loader.php?action=filter&filesrc=' + filesrc + '&filtertype=preset&filtername=colorize';
 			var red = $("#modal-slider-red").slider("value");
 			var blue = $("#modal-slider-blue").slider("value");
@@ -414,7 +414,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 			}
 			matrix = JSON.stringify(matrix);
 			//console.log(matrix);
-			var filesrc = thumb_400 + getFilename();
+			var filesrc = thumb_400 + '/' + getFilename();
 			var src = 'loader.php?action=convolution_custom&filesrc=' + filesrc + '&divisor=' + divisor + '&offset=' + offset + '&matrix=' + matrix;
 			//console.log(src)
 			$("#modal-img").attr("src", src);
