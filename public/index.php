@@ -1,13 +1,11 @@
 <?php
 
 use Easygd\Color;
-use Easygd\Convolution;
 use Easygd\ConvolutionFunctions;
 use Easygd\Image;
 use Easygd\ImageFilterIterator;
 use Easygd\Position;
 use Easygd\Text;
-use Easygd\Transformation;
 
 require '../boostrap/conf.php';
 
@@ -15,11 +13,10 @@ $create_thumb = isset($_GET['create_thumb']) ? $_GET['create_thumb'] : 0;
 
 if ($create_thumb) {
 
-	set_time_limit(0);
-	// $text = Text::create('Copyright (C) 2013 Florent Brusciano', Text::TEXT_MACOS_FONT_PATH . '/Arial Black.ttf')
-	//     ->setSize(5)
-	//     ->setColor(Color::White())
-	//     ->setPosition(Position::create(40, 190));
+	$text = (new Text)->create('Copyright (C) 2013 F.Brusciano')
+		->setSize(2)
+		->setColor(Color::White())
+		->setPosition((new Position)->create(10, 180));
 
 	foreach (new ImageFilterIterator(new DirectoryIterator(IMG_PATH)) as $file) {
 
@@ -30,7 +27,7 @@ if ($create_thumb) {
 		$image->thumbnail(100)
 			->save(THUMB_100 . '/' . $file->getFilename(), 100, FALSE);
 		$image->thumbnail(200)
-			// ->addText($text)
+			->addText($text)
 			->save(THUMB_200 . '/' . $file->getFilename(), 100, FALSE);
 
 		$image->thumbnail(400)
@@ -85,9 +82,9 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 
 		#myModal {
 			max-height: 800px;
-			width: 900px;
+			width: 1000px;
 			/* SET THE WIDTH OF THE MODAL */
-			margin: 0px 0 0 -450px;
+			margin: 0px 0 0 -500px;
 			/* CHANGE MARGINS TO ACCOMODATE THE NEW WIDTH (original = margin: -250px 0 0 -280px;) */
 		}
 
@@ -151,7 +148,7 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 	<script src="assets/js/screenfull.min.js"></script>
 
 	<script>
-		var img_path = "<?php echo IMG_PATH; ?>";
+		var img_path = "/images";
 		var thumb_400 = "/thumb/400";
 		var thumb_200 = "/thumb/200";
 		var thumb_100 = "/thumb/100";
@@ -184,18 +181,18 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 				$('#modal-img').rotate(angle);
 			});
 
-			$('#modal-btn-fullscreen').click(function() {
+			$('#modal-btn-fullscreen').click(function(event) {
 				if (screenfull) {
-					var img = img_path + getFilename();
+					var img = img_path + '/' + getFilename();
 					$("#modal-img").attr("src", img);
-					screenfull.toggle($("#modal-img")[0]);
+					screenfull.toggle(event.target);
 				}
 			});
 
 			if (screenfull.enabled) {
 				screenfull.onchange = function() {
 					if (!screenfull.isFullscreen) {
-						var img = thumb_400 + getFilename();
+						var img = thumb_400 + '/' + getFilename();
 						$("#modal-img").attr("src", img);
 					}
 					console.log('Am I fullscreen? ' + screenfull.isFullscreen ? 'Yes' : 'No');
@@ -498,12 +495,12 @@ $iterator = new ImageFilterIterator(new DirectoryIterator(THUMB_200));
 							</li>
 							<li>
 								<div class="thumbnail">
-									<img id="lookuptable-averagegray" />
+									<img id="lookuptable-average_gray" />
 								</div>
 							</li>
 							<li>
 								<div class="thumbnail">
-									<img id="lookuptable-luminositygray" />
+									<img id="lookuptable-luminosity_gray" />
 								</div>
 							</li>
 							<li>

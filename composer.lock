@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/EasyGithDev/EasyGD.git",
-                "reference": "18c82f13e4d26cf5af177203f36d0b2be94a87e5"
+                "reference": "7745c33f5e72f4156ffd80168e1f3d101221c3d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EasyGithDev/EasyGD/zipball/18c82f13e4d26cf5af177203f36d0b2be94a87e5",
-                "reference": "18c82f13e4d26cf5af177203f36d0b2be94a87e5",
+                "url": "https://api.github.com/repos/EasyGithDev/EasyGD/zipball/7745c33f5e72f4156ffd80168e1f3d101221c3d9",
+                "reference": "7745c33f5e72f4156ffd80168e1f3d101221c3d9",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
                 "image",
                 "php"
             ],
-            "time": "2020-06-19T22:02:53+00:00"
+            "time": "2020-06-22T07:09:17+00:00"
         }
     ],
     "packages-dev": [],
