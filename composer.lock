@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcbc5b850dadba9b960d8857836dbc30",
+    "content-hash": "6818248acdf06b8e0f5581a45170b1c0",
     "packages": [
         {
             "name": "easygithdev/easygd",
-            "version": "dev-master",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/EasyGithDev/EasyGD.git",
-                "reference": "7745c33f5e72f4156ffd80168e1f3d101221c3d9"
+                "reference": "ab7f7ecc2704a36830cf11aa1d8f5c513d9a5d39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EasyGithDev/EasyGD/zipball/7745c33f5e72f4156ffd80168e1f3d101221c3d9",
-                "reference": "7745c33f5e72f4156ffd80168e1f3d101221c3d9",
+                "url": "https://api.github.com/repos/EasyGithDev/EasyGD/zipball/ab7f7ecc2704a36830cf11aa1d8f5c513d9a5d39",
+                "reference": "ab7f7ecc2704a36830cf11aa1d8f5c513d9a5d39",
                 "shasum": ""
             },
             "require": {
@@ -45,15 +45,13 @@
                 "image",
                 "php"
             ],
-            "time": "2020-06-22T07:09:17+00:00"
+            "time": "2020-06-21T09:51:02+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "easygithdev/easygd": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

@@ -1,5 +1,5 @@
 {
     "require": {
-        "easygithdev/easygd": "master-dev"
+        "easygithdev/easygd": "^1.0"
     }
 }
